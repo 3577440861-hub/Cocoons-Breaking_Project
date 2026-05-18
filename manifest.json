@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "破茧实验 - B站自动化助手",
+  "version": "1.0",
+  "description": "破茧计划：AI 分析 + 自动化执行",
+  "permissions": ["storage", "tabs", "activeTab"],
+  "host_permissions": [
+    "https://api.openai.com/*",
+    "https://api.deepseek.com/*",
+    "https://www.bilibili.com/*",
+    "https://search.bilibili.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.bilibili.com/",
+        "https://search.bilibili.com/*",
+        "https://www.bilibili.com/video/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
